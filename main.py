@@ -31,7 +31,7 @@ if __name__ == "__main__":
     root.geometry("800x600")
 
     # Add quit button
-    quit = Button(root, text="Quit", command=root.quit, d)
+    quit = Button(root, text="Quit", command=root.quit)
     quit.pack()
 
     root.withdraw() # Hide main window
