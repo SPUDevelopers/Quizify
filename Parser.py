@@ -1,18 +1,3 @@
-def parse():
-    p = Parser()
-    p.add_word("hi")
-    p.add_word("hi")
-    p.add_word("HI")
-    p.add_word("bye")
-    p.add_word("(bye)")
-    p.add_word(",bye.")
-
-    for x in p.words:
-        print (x.name)
-        print (x.frequency)
-
-
-
 class Parser:
     def __init__(self):
         self.words = []
@@ -37,17 +22,3 @@ class Parser:
 
     def get_list(self):
         return self.words
-
-
-
-class Word :
-    def __init__(self, name, frequency):
-        self.name = name
-        self.frequency = frequency
-
-    def lower(self):
-        return self.name.lower()
-
-
-if __name__ == "__main__":
-    parse()
