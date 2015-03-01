@@ -1,20 +1,23 @@
+import Word
+
 class Parser:
+
     def __init__(self):
         self.words = []
 
-    def add_word(self, word):
+    def add_word(self, word, definition):
         is_in_list = False
         if word is not None:
             word = word.strip(',.()/\\:;*&^$#@!`~&[]{}|?<>+=-')
             for x in self.words:
-                if x.lower() == word.lower() :
+                if x.name == word.lower():
                     x.frequency += 1
                     is_in_list = True
 
-            if is_in_list == False :
-                self.words.append(Word(word.lower(), 1))
+            if is_in_list == False:
+                self.words.append(Word.Word(word, 1, definition))
             return True
-        else :
+        else:
             return False
 
     def clear(self):

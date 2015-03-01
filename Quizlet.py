@@ -36,7 +36,10 @@ class Quizlet:
     def parse_definition_json(self, data):
         json_data = json.loads(data)
 
-        definition = json_data['official_definitions'][0]['definition']
+        try:
+            definition = json_data['official_definitions'][0]['definition']
+        except:
+            definition = "No definition found for this word."
 
         return definition
 

@@ -6,22 +6,33 @@ Aaron Grider, Joe Jazdzewski, Isaac Wang
 
 #!/usr/bin/env python3
 
+
+import Parser
+import Quizlet
+import Word
 import sys
+
 from tkinter import *
 from tkinter.filedialog import askopenfilename
 
 WINDOW_WIDTH = 400
 WINDOW_HEIGHT = 200
 
+parser = Parser.Parser()
+quizlet = Quizlet.Quizlet()
+
 def read_textfile(file_name):
 
     file = open(file_name,'r')
 
     for word in file.read().split():
-        print(word + ":")
+        print("Reading word: " + word)
+        parser.add_word(word, get_definition(word))
 
-def present_definitions():
-    print("Present definition")
+def get_definition(word):
+    print("Getting definition")
+    definition = quizlet.query_definition(word)
+    return definition
 
 if __name__ == "__main__":
 
@@ -48,5 +59,12 @@ if __name__ == "__main__":
         sys.exit()
 
     root.deiconify() # Show main window
+
+    # Call required methods
+    read_textfile(root.filename)
+
+    print("Flash cards sucessfully created")
+    for item in Parser.Parser.get_list(parser):
+        print(item.name + " Count(", item.frequency, "): ", item.definition)
 
     root.mainloop()

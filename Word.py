@@ -1,7 +1,5 @@
-class Word :
-    def __init__(self, name, frequency):
-        self.name = name
+class Word:
+    def __init__(self, name, frequency, definition):
+        self.name = name.lower()
         self.frequency = frequency
-
-    def lower(self):
-        return self.name.lower()
+        self.definition = definition
