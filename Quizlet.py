@@ -18,8 +18,9 @@ class Quizlet:
     client_id = 'p7jaJN9kEv'
     api_key = '4JRgAgZwm4jnekrPRk23pt'
 
-    def __init__(self):
-        self.auth_token = 'be9b45472195218d08593f46c56ef658e0d5a071'
+    def __init__(self, secret):
+        self.auth_token = ''
+        self.authorize(secret)
 
     def make_definition_request(self, word):
         if word is None:
@@ -80,7 +81,7 @@ class Quizlet:
         print(self.auth_token)
 
     def add_flashcard(self, word):
-
+        pass
 
 # https://api.quizlet.com/2.0/sets/415?client_id=p7jaJN9kEv&whitespace=1
 # https://api.quizlet.com/2.0/search/definitions?client_id=p7jaJN9kEv&whitespace=1&q=testing&limit=1
@@ -88,5 +89,4 @@ class Quizlet:
 # https://quizlet.com/authorize?response_type=code&client_id=p7jaJN9kEv&scope=read&state=RANDOM_STRING
 
 if __name__ == '__main__':
-    my_quiz = Quizlet()
-    my_quiz.authorize('548c1ddefe2eaf9e47b48e17566380cda8e7a6e4')
+    my_quiz = Quizlet('5b6e4400fa828c55a313a0960454d260eaa46775')
