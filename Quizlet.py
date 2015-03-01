@@ -81,7 +81,16 @@ class Quizlet:
         print(self.auth_token)
 
     def add_flashcard(self, word):
-        pass
+        set_id = '73203923'
+        values = urllib.parse.urlencode({'term': word.name, 'definition': word.definition})
+        headers = {'Content-type': 'application/x-www-form-urlencoded', 'Authorization': 'Bearer ' + self.auth_token}
+
+        conn = http.client.HTTPSConnection('api.quizlet.com')
+        conn.request('POST', '/2.0/sets/' + set_id + '/terms', values, headers)
+        response = conn.getresponse()
+
+        data = str(response.read(), 'utf-8')
+        print(data)
 
 # https://api.quizlet.com/2.0/sets/415?client_id=p7jaJN9kEv&whitespace=1
 # https://api.quizlet.com/2.0/search/definitions?client_id=p7jaJN9kEv&whitespace=1&q=testing&limit=1

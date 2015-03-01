@@ -19,7 +19,7 @@ WINDOW_WIDTH = 400
 WINDOW_HEIGHT = 200
 
 parser = Parser.Parser()
-quizlet = Quizlet.Quizlet()
+quizlet = Quizlet.Quizlet('695d75d41c43e243bbee2b8896a7b99bc9fefe4c')
 
 def read_textfile(file_name):
 
@@ -66,5 +66,6 @@ if __name__ == "__main__":
     print("Flash cards sucessfully created")
     for item in Parser.Parser.get_list(parser):
         print(item.name + " Count(", item.frequency, "): ", item.definition)
+        quizlet.add_flashcard(item)
 
     root.mainloop()
